@@ -3,7 +3,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["PORT"],
+      "env": ["PORT", "CI"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
