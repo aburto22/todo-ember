@@ -17,8 +17,8 @@
     "eslint": "^8.30.0",
     "eslint-config-custom": "*",
     "nodemon": "^2.0.20",
-    "tsconfig": "*",
     "ts-node": "^10.9.1",
+    "tsconfig": "*",
     "typescript": "^4.9.4"
   },
   "dependencies": {
