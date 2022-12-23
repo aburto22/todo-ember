@@ -25,12 +25,12 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/*ember*",
-      "**/*ember*/**",
-      "**/*glint*",
-      "**/*glint*/**",
-      "**/*qunit*",
-      "**/*qunit*/**"
+      "client/*ember*",
+      "client/*ember*/**",
+      "client/*glint*",
+      "client/*glint*/**",
+      "client/*qunit*",
+      "client/*qunit*/**"
     ]
   }
 }
