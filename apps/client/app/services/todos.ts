@@ -7,10 +7,11 @@ export default class TodosService extends Service {
   todos: Todos = new TrackedArray(TODOS);
 
   add(todo: Todo): void {
-    this.todos.pushObject(todo);
+    this.todos.push(todo);
   }
 
   remove(todo: Todo): void {
-    this.todos.removeObject(todo);
+    const index = this.todos.findIndex((td) => td.id === todo.id);
+    this.todos.splice(index, 1);
   }
 }

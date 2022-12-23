@@ -99,5 +99,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "nanoid": "^4.0.0"
   }
 }
