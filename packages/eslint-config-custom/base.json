@@ -1,12 +1,18 @@
 {
-  "plugins": ["@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "turbo",
     "prettier"
   ],
   "rules": {},
-  "ignorePatterns": ["node_modules", "dist", ".eslintrc.js"]
+  "ignorePatterns": ["node_modules", "dist", ".eslintrc.js"],
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "plugins": ["@typescript-eslint"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "rules": {}
+    }
+  ]
 }
