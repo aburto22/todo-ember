@@ -23,6 +23,6 @@
       "apps/*",
       "packages/*"
     ],
-    "nohoist": ["**/*ember*", "**/*ember*/**"]
+    "nohoist": ["**/*ember*", "**/*ember*/**", "**/*glint*", "**/*glint*/**"]
   }
 }
