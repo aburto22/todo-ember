@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Ember",
+  "docs": "https://docs.ember-cli-typescript.com",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "noEmitOnError": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "types": []
+  }
+}

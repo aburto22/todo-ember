@@ -1,14 +1,6 @@
 {
-  "extends": "@tsconfig/ember/tsconfig.json",
+  "extends": "tsconfig/ember",
   "compilerOptions": {
-    "strict": true,
-    "exactOptionalPropertyTypes": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
     "baseUrl": ".",
     "paths": {
       "client/tests/*": ["tests/*"],
