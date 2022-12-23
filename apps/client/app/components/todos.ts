@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
-import TODOS from 'client/data/todos';
+import { Todos } from 'client/types';
 
 interface TodosSignature {
   Args: {
-    todos: typeof TODOS;
+    todos: Todos;
   };
 }
 
