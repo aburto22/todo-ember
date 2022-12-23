@@ -14,4 +14,9 @@ export default class TodosService extends Service {
     const index = this.todos.findIndex((td) => td.id === todo.id);
     this.todos.splice(index, 1);
   }
+
+  edit(todo: Todo): void {
+    const index = this.todos.findIndex((td) => td.id === todo.id);
+    this.todos.splice(index, 1, todo);
+  }
 }

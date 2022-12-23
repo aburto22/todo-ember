@@ -1,0 +1,12 @@
+<li>
+  {{#if this.isEditing}}
+    {{! template-lint-disable require-input-label }}
+    <Input @value={{this.text}} />
+    <button type='button' {{on 'click' this.edit}}>Save</button>
+    <button type='button' {{on 'click' this.toggleEdit}}>Cancel</button>
+  {{else}}
+    {{@todo.text}}
+    <button type='button' {{on 'click' this.toggleEdit}}>Edit</button>
+    <button type='button' {{on 'click' this.remove}}>Delete</button>
+  {{/if}}
+</li>

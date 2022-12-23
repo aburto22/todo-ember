@@ -19,7 +19,6 @@ export default class CreateTodoFormComponent extends Component {
     };
     this.todos.add(newTodo);
     this.text = '';
-    return;
   }
 }
 

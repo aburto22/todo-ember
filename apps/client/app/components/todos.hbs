@@ -1,5 +1,5 @@
 <ul>
   {{#each @todos as |todo|}}
-    <li>{{todo.text}}</li>
+    <Todo @todo={{todo}} />
   {{/each}}
 </ul>
