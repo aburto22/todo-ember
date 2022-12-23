@@ -25,8 +25,8 @@
       "packages/*"
     ],
     "nohoist": [
-      "client/*ember*",
-      "client/*ember*/**",
+      "**/*ember*",
+      "**/*ember*/**",
       "client/*glint*",
       "client/*glint*/**",
       "client/*qunit*",
