@@ -40,11 +40,6 @@ export default class TodoComponent extends Component<TodoSignature> {
     this.text = '';
     this.toggleEdit();
   }
-
-  @action
-  focus(element: HTMLElement): void {
-    element.focus();
-  }
 }
 
 declare module '@glint/environment-ember-loose/registry' {
