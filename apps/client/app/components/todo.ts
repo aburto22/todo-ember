@@ -28,7 +28,9 @@ export default class TodoComponent extends Component<TodoSignature> {
   }
 
   @action
-  edit(): void {
+  edit(e: SubmitEvent): void {
+    e.preventDefault();
+
     const newTodo: Todo = {
       ...this.args.todo,
       text: this.text,
@@ -37,6 +39,11 @@ export default class TodoComponent extends Component<TodoSignature> {
     this.todos.edit(newTodo);
     this.text = '';
     this.toggleEdit();
+  }
+
+  @action
+  focus(element: HTMLElement): void {
+    element.focus();
   }
 }
 
