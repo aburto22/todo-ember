@@ -1,4 +1,5 @@
 {
   "extends": ["custom/ember"],
-  "rules": {}
+  "rules": {},
+  "ignorePatterns": ["tailwind.config.js"]
 }
