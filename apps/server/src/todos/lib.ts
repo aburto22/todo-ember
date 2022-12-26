@@ -8,6 +8,8 @@ let todos: Todos = [
 
 export const getTodos = async () => todos;
 
+export const getTodo = async (id: string) => todos.find((t) => t.id === id);
+
 export const addTodo = async (todo: Todo) => {
   todos = [...todos, todo];
 };
