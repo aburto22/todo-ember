@@ -26,6 +26,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.API_URL = 'http://localhost:8080';
   }
 
   if (environment === 'test') {
@@ -38,10 +39,12 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+    ENV.APP.API_URL = 'http://localhost:8080';
   }
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.APP.API_URL = 'http://localhost:8080';
   }
 
   return ENV;
