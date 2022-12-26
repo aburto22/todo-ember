@@ -4,7 +4,7 @@ export const toJson = (todos: Todos | Todo) => {
   if (Array.isArray(todos)) {
     return {
       data: todos.map((t) => ({
-        type: 'todos',
+        type: 'todo',
         id: t.id,
         attributes: {
           ...t,
@@ -14,7 +14,7 @@ export const toJson = (todos: Todos | Todo) => {
   }
   return {
     data: {
-      type: 'todos',
+      type: 'todo',
       id: todos.id,
       attributes: {
         ...todos,

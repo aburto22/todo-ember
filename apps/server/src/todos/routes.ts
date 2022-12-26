@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { toJson } from '../json/lib';
 import { Todo } from '../types';
-import { addTodo, getTodo, getTodos, updateTodo } from './lib';
+import { addTodo, getTodo, getTodos, updateTodo, removeTodo } from './lib';
 
 const router = Router();
 
@@ -42,6 +42,12 @@ router.patch('/:id', async (req, res) => {
     text,
   };
   await updateTodo(updatedTodo);
+  return res.status(204).end();
+});
+
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params as { id: string };
+  await removeTodo(id);
   return res.status(204).end();
 });
 
