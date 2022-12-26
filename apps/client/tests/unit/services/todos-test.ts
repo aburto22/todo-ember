@@ -1,12 +1,13 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'client/tests/helpers';
+import TodosService from 'client/services/todos';
 
-module('Unit | Controller | index', function (hooks) {
+module('Unit | Service | todos', function (hooks) {
   setupTest(hooks);
 
   // TODO: Replace this with your real tests.
   test('it exists', function (assert) {
-    let controller = this.owner.lookup('controller:index');
-    assert.ok(controller);
+    const service = this.owner.lookup('service:todos') as TodosService;
+    assert.ok(service);
   });
 });
