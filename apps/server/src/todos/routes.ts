@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { toJson } from '../json/lib';
+import { getData, toJson } from '../json/lib';
 import { JSONData, Todo } from '../types';
 import { addTodo, getTodo, getTodos, updateTodo, removeTodo } from './lib';
 import { nanoid } from 'nanoid';
@@ -25,38 +25,38 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  let dataRaw = '';
+  const data = await getData<JSONData>(req);
+  const { text } = data.data.attributes;
 
-  req.on('data', (chunk: string) => {
-    dataRaw += chunk;
-  });
+  if (!text) {
+    return res.status(500).end();
+  }
 
-  req.on('end', async () => {
-    const data: JSONData = JSON.parse(dataRaw);
-    const { text } = data.data.attributes;
+  const newTodo: Todo = {
+    id: nanoid(),
+    text,
+  };
+  await addTodo(newTodo);
 
-    if (!text) {
-      return res.status(500).end();
-    }
-
-    const newTodo: Todo = {
-      id: nanoid(),
-      text,
-    };
-    await addTodo(newTodo);
-
-    const jsonTodo = toJson(newTodo);
-    return res.status(201).json(jsonTodo);
-  });
+  const jsonTodo = toJson(newTodo);
+  return res.status(201).json(jsonTodo);
 });
 
 router.patch('/:id', async (req, res) => {
-  const { text } = req.body as { text: string };
   const { id } = req.params as { id: string };
+  const data = await getData<JSONData>(req);
+
+  const { text } = data.data.attributes;
+
+  if (!text) {
+    return res.status(400).end();
+  }
+
   const updatedTodo: Todo = {
     id,
     text,
   };
+
   await updateTodo(updatedTodo);
   return res.status(204).end();
 });
