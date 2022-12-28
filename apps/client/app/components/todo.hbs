@@ -2,6 +2,7 @@
   {{#if this.isEditing}}
     <form {{on 'submit' this.edit}}>
       <label>
+        {{! @glint-expect-error }}
         <Input @value={{this.text}} {{autofocus}} />
       </label>
       <button type='submit'>Save</button>
