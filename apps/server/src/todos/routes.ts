@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { toJson } from '../json/lib';
-import { Todo } from '../types';
+import { JSONData, Todo } from '../types';
 import { addTodo, getTodo, getTodos, updateTodo, removeTodo } from './lib';
+import { nanoid } from 'nanoid';
 
 const router = Router();
 
@@ -24,14 +25,29 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { text } = req.body as { text: string };
-  const id = (await import('nanoid')).nanoid();
-  const newTodo: Todo = {
-    id,
-    text,
-  };
-  await addTodo(newTodo);
-  return res.status(201).end();
+  let dataRaw = '';
+
+  req.on('data', (chunk: string) => {
+    dataRaw += chunk;
+  });
+
+  req.on('end', async () => {
+    const data: JSONData = JSON.parse(dataRaw);
+    const { text } = data.data.attributes;
+
+    if (!text) {
+      return res.status(500).end();
+    }
+
+    const newTodo: Todo = {
+      id: nanoid(),
+      text,
+    };
+    await addTodo(newTodo);
+
+    const jsonTodo = toJson(newTodo);
+    return res.status(201).json(jsonTodo);
+  });
 });
 
 router.patch('/:id', async (req, res) => {

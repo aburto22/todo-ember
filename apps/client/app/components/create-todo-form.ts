@@ -1,23 +1,24 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import TodosService from 'client/services/todos';
-import { Todo } from 'client/types';
-import { nanoid } from 'nanoid';
 import { tracked } from 'tracked-built-ins';
+import Store from '@ember-data/store';
+import Router from '@ember/routing/router';
 
 export default class CreateTodoFormComponent extends Component {
-  @service declare todos: TodosService;
+  @service declare store: Store;
+  @service declare router: Router;
   @tracked text = '';
 
   @action
-  submit(e: SubmitEvent): void {
+  async submit(e: SubmitEvent): Promise<void> {
     e.preventDefault();
-    const newTodo: Todo = {
-      id: nanoid(),
+
+    const newTodo = this.store.createRecord('todo', {
       text: this.text,
-    };
-    this.todos.add(newTodo);
+    });
+
+    await newTodo.save();
     this.text = '';
   }
 }

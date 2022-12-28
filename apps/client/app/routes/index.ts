@@ -8,6 +8,6 @@ export default class IndexRoute extends Route {
   @service declare store: Store;
 
   model(): ArrayProxy<TodoModel> {
-    return this.store.query('todo', {});
+    return this.store.findAll('todo');
   }
 }

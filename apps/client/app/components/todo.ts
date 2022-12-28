@@ -31,12 +31,9 @@ export default class TodoComponent extends Component<TodoSignature> {
   edit(e: SubmitEvent): void {
     e.preventDefault();
 
-    const newTodo: Todo = {
-      ...this.args.todo,
-      text: this.text,
-    };
+    this.args.todo.text = this.text;
+    this.args.todo.save();
 
-    this.todos.edit(newTodo);
     this.text = '';
     this.toggleEdit();
   }
