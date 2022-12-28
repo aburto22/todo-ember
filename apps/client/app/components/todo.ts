@@ -18,7 +18,7 @@ export default class TodoComponent extends Component<TodoSignature> {
 
   @action
   remove(): void {
-    this.todos.remove(this.args.todo);
+    this.args.todo.destroyRecord();
   }
 
   @action
